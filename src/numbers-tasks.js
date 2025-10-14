@@ -88,8 +88,20 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+
+  let a = 0;
+  let b = 1;
+
+  for (let i = 2; i <= index; i += 1) {
+    const next = a + b;
+    a = b;
+    b = next;
+  }
+
+  return b;
 }
 
 function getSumToN(n) {
@@ -179,52 +191,16 @@ function getIntegerPartNumber(num) {
   return Math.trunc(num);
 }
 
-/**
- * Returns the sum of numbers.
- *
- * @param {number} x1
- * @param {number} x2
- * @param {number} x3
- * @returns {number}
- *
- * @example:
- * 1, 2, 3       => 6
- * 0.1, 0.2, 0.3 => 0.6
- */
 function getSumOfNumbers(x1, x2, x3) {
   return Number(x1 + x2 + x3).toFixed(10);
 }
 
-/**
- * Returns the largest number.
- *
- * @param {number} firstNumber
- * @param {number} secondNumber
- * @return {number}
- *
- * @example:
- * 1, 2   => 2
- * -5, -6 => -5
- * 0, 5   => 5
- */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+function getMaxNumber(first, second) {
+  return Math.max(first, second);
 }
 
-/**
- * Returns a random integer in the range from min to max.
- *
- * @param {number} min
- * @param {number} max
- * @return {number}
- *
- * @example:
- * 1, 2  => 1 | 2
- * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
- * -1, 1 => -1 | 0 | 1
- */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 /**
@@ -237,8 +213,8 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  return Math.hypot(a, b);
 }
 
 /**
@@ -254,8 +230,10 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  return number >= 0
+    ? Math.floor((number + 1) / 2)
+    : Math.abs(Math.ceil((number - 1) / 2));
 }
 
 module.exports = {
